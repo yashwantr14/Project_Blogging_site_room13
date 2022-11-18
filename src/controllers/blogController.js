@@ -132,7 +132,7 @@ const updateblog = async function (req, res)
         return res.status(200).send
         ({  
         status: true,
-        msg: updatedblog
+        data: updatedblog
         })
         }catch(err){
         return res.status(500).send({ status: false, msg: err.message })
