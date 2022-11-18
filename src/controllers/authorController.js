@@ -37,6 +37,7 @@ const createdAuthor = async function(req, res){
 
 const login=async function(req,res)
 {
+  try{
         const email=req.body.email
         const password=req.body.password
         let author=await authorModel.findOne({email:email, password:password})
@@ -48,6 +49,10 @@ const login=async function(req,res)
         authorId : authorId   
         },"project-1_group-13")
         res.status(201).send({status: true ,Token: token})
+      }catch(err)
+      {
+        return res.status(500).send({ status : false , msg : err.message})
+      }
 }
 
 module.exports = { login , createdAuthor }

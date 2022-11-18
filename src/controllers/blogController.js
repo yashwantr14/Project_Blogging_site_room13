@@ -43,28 +43,6 @@ const createdBlog = async function (req, res)
 
 
 
-// const getBlogs = async function (req, res) 
-// {
-//         try {
-//         let { authorId } = req.query;
-//         let filter = { isDeleted: false, ispublished: true }
-//         if(authorId){ filter.authorId = authorId }
-        
-//         if(req.query.authorId){
-//         if(!isvalidObjectid(req.query.authorId))
-//         return res.status(400).send({ status: false, msg: "please enter valid Author Id" })
-//         else req.query.authorId = authorId
-//         }
-//         let blogdata = await blogModel.find(filter)
-//         if(blogdata.length == 0){
-//         return res.status(400).send({ status: false, msg: "such blogs not available" })
-//         }else{
-//         return res.status(200).send({ status: true, data: blogdata })
-//         }
-//         }catch(err){
-//         return res.status(500).send({ status: false, msg: err.message })
-//         }
-// }
 
 const getBlogs = async function (req, res) {
 

@@ -38,7 +38,7 @@ const authorization =  async function (req, res, next)
             return  res.status(404).send({status : false , msg : "blog not found"})
         }
         let loggedAuthorId = blogData.authorId.toString()
-        if(authorId !== loggedAuthorId) return res.send("ERROR : Unauthorized to perform this action")
+        if(authorId !== loggedAuthorId) return res.status(403).send("ERROR : Unauthorized to perform this action")
         next()
 
         }else if(req.query){
@@ -53,7 +53,7 @@ const authorization =  async function (req, res, next)
             data.tags = a
             let tagdata = await blogsModel.findOne({tags : data.tags})
             var author = tagdata.authorId.toString()
-            if( authorId !== author) return res.send("ERROR : Unauthorized to perform this action")
+            if( authorId !== author) return res.status(403).send("ERROR : Unauthorized to perform this action")
             next()
         }
         if(data.subcategory){
@@ -61,7 +61,7 @@ const authorization =  async function (req, res, next)
             data.subcategory = a
             let subcategorydata = await blogsModel.findOne({subcategory : data.subcategory})
             var author = subcategorydata.authorId.toString()
-            if( authorId !== author) return res.send("ERROR : Unauthorized to perform this action")
+            if( authorId !== author) return res.status(403).send("ERROR : Unauthorized to perform this action")
             next()
         }
        
